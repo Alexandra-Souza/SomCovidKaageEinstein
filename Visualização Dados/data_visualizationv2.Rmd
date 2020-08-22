@@ -1,0 +1,95 @@
+---
+title: "Data Visualization"
+author: "Leandro Augusto"
+date: "31 de março de 2020"
+output: html_document
+---
+
+Carregando o dataset
+
+```{r}
+bd <- read.csv("Hemograma4.CSV", header = TRUE, sep = ";")
+```
+
+```{r}
+str(bd)
+```
+
+```{r}
+install.packages("plotly")
+library(plotly)
+```
+
+
+Gráfico de dispersão
+
+
+```{r}
+fig <- plot_ly(bd, x = ~bd$Hematocrit, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Hematocrit x Exam Result",xaxis=list(title="Hematocrit"),yaxis=list(title="SARSCov-2"))
+fig
+fig <- plot_ly(bd, x = ~bd$Hemoglobin, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Hemoglobin x Exam Result",xaxis=list(title="Hemoglobin"),yaxis=list(title="SARSCov-2"))
+fig
+fig <- plot_ly(bd, x = ~bd$Mean.platelet.volume, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Mean.platelet.volume x Exam Result",xaxis=list(title="Mean.platelet.volume"),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Red.blood.Cells, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Red.blood.Cells x Exam Result",xaxis=list(title="Red.blood.Cells"),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Lymphocytes, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Lymphocytes x Exam Result",xaxis=list(title="Lymphocytes"),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Mean.corpuscular.hemoglobin.concentration..MCHC., y = ~bd$SARS.Cov.2.exam.result, type = 'scatter',marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Mean.corpuscular.hemoglobin.concentration..MCHC. x Exam Result",xaxis=list(title="Mean.corpuscular.hemoglobin.concentration..MCHC."),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Leukocytes, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Leukocytes x Exam Result",xaxis=list(title="Leukocytes"),yaxis=list(title="SARSCov-2"))
+fig
+fig <- plot_ly(bd, x = ~bd$Basophils, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Basophils x Exam Result",xaxis=list(title="Basophils"),yaxis=list(title="SARSCov-2"))
+fig
+fig <- plot_ly(bd, x = ~bd$Mean.corpuscular.hemoglobin..MCH, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', mode = 'markers')
+fig <- fig %>% layout(title="Gráfico de Mean.corpuscular.hemoglobin..MCH x Exam Result",xaxis=list(title="Mean.corpuscular.hemoglobin..MCH"),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Eosinophils, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Gráfico de Eosinophils x Exam Result",xaxis=list(title="Eosinophils"),yaxis=list(title="SARSCov-2"))
+fig
+fig <- plot_ly(bd, x = ~bd$Mean.corpuscular.volume..MCV., y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', mode = 'markers')
+fig <- fig %>% layout(title="Gráfico de Mean.corpuscular.volume..MCV. x Exam Result",xaxis=list(title="Mean.corpuscular.volume..MCV."),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Monocytes, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', mode = 'markers')
+fig <- fig %>% layout(title="Gráfico de Monocytes x Exam Result",xaxis=list(title="Monocytes"),yaxis=list(title="SARS.Cov.2.exam.result"))
+fig
+fig <- plot_ly(bd, x = ~bd$Red.blood.cell.distribution.width..RDW., y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', marker = list(size = 14, width = 2))
+fig <- fig %>% layout(title="Red.blood.cell.distribution.width..RDW. x Exam Result",xaxis=list(title="Red.blood.cell.distribution.width..RDW."),yaxis=list(title="SARSCov-2"))
+fig
+
+
+
+
+
+fig <- plot_ly(bd, x = ~bd$Leukocytes, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', size = 10, width = 1, color = ~bd$SARS.Cov.2.exam.result, colors= c("blue", "red"))
+fig <- fig %>% layout(title="Gráfico de Leukocytes x Exam Result", xaxis=list(title="Leukocytes",tickfont = list(size = 20)),
+yaxis=list(title="SARSCov-2", tickfont = list(size = 20)))
+fig
+
+fig <- plot_ly(bd, x = ~bd$Basophils, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', size = 10, width = 1, color = ~bd$SARS.Cov.2.exam.result, colors= c("blue", "red"))
+fig <- fig %>% layout(title="Gráfico de Basophils x Exam Result",xaxis=list(title="Basophils",tickfont = list(size = 20)),
+yaxis=list(title="SARSCov-2", tickfont = list(size = 20)))
+fig
+
+fig <- plot_ly(bd, x = ~bd$Eosinophils, y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', size = 10, width = 1, color = ~bd$SARS.Cov.2.exam.result, colors= c("blue", "red"))
+fig <- fig %>% layout(title="Gráfico de Eosinophils x Exam Result",xaxis=list(title="Eosinophils",tickfont = list(size = 20)),
+yaxis=list(title="SARSCov-2", tickfont = list(size = 20)))
+fig
+
+fig <- plot_ly(bd, x = ~bd$Red.blood.cell.distribution.width..RDW., y = ~bd$SARS.Cov.2.exam.result, type = 'scatter', size = 10, width = 1, color = ~bd$SARS.Cov.2.exam.result, colors= c("blue", "red"))
+fig <- fig %>% layout(title="Red.blood.cell.distribution.width..RDW. x Exam Result",xaxis=list(title="Red.blood.cell.distribution.width..RDW.",tickfont = list(size = 20)),
+yaxis=list(title="SARSCov-2", tickfont = list(size = 20)))
+fig
+
+
+
+```
+
